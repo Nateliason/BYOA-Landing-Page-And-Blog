@@ -23,6 +23,19 @@ function applyTemplate(template, data) {
         .replace('{{content}}', data.content);
 }
 
+// Special function to handle index.html
+function processIndex(indexContent, template) {
+    // Extract everything between <body> and </body> from index content
+    const bodyMatch = indexContent.match(/<body[^>]*>([\s\S]*)<\/body>/i);
+    const mainContent = bodyMatch ? bodyMatch[1].trim() : indexContent;
+    
+    // Extract title from index content
+    const titleMatch = indexContent.match(/<title[^>]*>([\s\S]*)<\/title>/i);
+    const title = titleMatch ? titleMatch[1].trim() : 'Build Your Own Apps with AI';
+    
+    return applyTemplate(template, { title, content: mainContent });
+}
+
 // Process markdown files
 function processMarkdown(filePath) {
     const content = fs.readFileSync(filePath, 'utf-8');
@@ -37,6 +50,13 @@ function processMarkdown(filePath) {
 async function build() {
     // Copy static assets
     await fs.copy('src/css', 'dist/css');
+
+    // Handle index.html specially
+    if (fs.existsSync('src/index.html')) {
+        const indexContent = fs.readFileSync('src/index.html', 'utf-8');
+        const processedIndex = processIndex(indexContent, baseTemplate);
+        fs.writeFileSync('dist/index.html', processedIndex);
+    }
 
     // Process content directories
     const contentDirs = ['pages', 'blog'];
@@ -53,6 +73,7 @@ async function build() {
         
         for (const file of files) {
             if (!file.endsWith('.md')) continue;
+            if (dir === 'pages' && file === 'index.md') continue; // Skip index.md in pages
             
             const filePath = path.join(srcDir, file);
             const { content, title } = processMarkdown(filePath);
@@ -63,22 +84,7 @@ async function build() {
                 ? path.join('dist', file.replace('.md', '.html'))
                 : path.join(distDir, file.replace('.md', '.html'));
             fs.writeFileSync(outFile, html);
-
-            // If this is index.md in pages directory, also copy it to root dist
-            if (dir === 'pages' && file === 'index.md') {
-                fs.writeFileSync(path.join('dist', 'index.html'), html);
-            }
         }
-    }
-
-    // Create a default index.html if one doesn't exist
-    if (!fs.existsSync(path.join('dist', 'index.html'))) {
-        const defaultContent = {
-            title: 'Welcome',
-            content: '<h1>Welcome to My Site</h1><p>This is the homepage of my static site.</p>'
-        };
-        const html = applyTemplate(baseTemplate, defaultContent);
-        fs.writeFileSync(path.join('dist', 'index.html'), html);
     }
 
     console.log('Build completed successfully!');
