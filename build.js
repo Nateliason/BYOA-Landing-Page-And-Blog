@@ -19,7 +19,7 @@ const baseTemplate = fs.readFileSync('src/templates/base.html', 'utf-8');
 // Helper function to replace template variables
 function applyTemplate(template, data) {
     return template
-        .replace('{{title}}', data.title || 'My Site')
+        .replace('{{title}}', data.title || 'Build Your Own Apps with AI')
         .replace('{{content}}', data.content);
 }
 
@@ -59,7 +59,9 @@ async function build() {
             
             const html = applyTemplate(baseTemplate, { title, content });
             
-            const outFile = path.join(distDir, file.replace('.md', '.html'));
+            const outFile = dir === 'pages' 
+                ? path.join('dist', file.replace('.md', '.html'))
+                : path.join(distDir, file.replace('.md', '.html'));
             fs.writeFileSync(outFile, html);
 
             // If this is index.md in pages directory, also copy it to root dist
