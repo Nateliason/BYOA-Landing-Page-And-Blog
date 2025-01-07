@@ -19,6 +19,7 @@ const blogTemplate = fs.readFileSync('src/templates/blog.html', 'utf-8');
 const blogIndexTemplate = fs.readFileSync('src/templates/blog-index.html', 'utf-8');
 const headerPartial = fs.readFileSync('src/templates/partials/header.html', 'utf-8');
 const footerPartial = fs.readFileSync('src/templates/partials/footer.html', 'utf-8');
+const convertKitPartial = fs.readFileSync('src/templates/partials/convertkit.html', 'utf-8');
 
 // Helper function to replace template variables
 function applyTemplate(template, data) {
@@ -27,6 +28,7 @@ function applyTemplate(template, data) {
     // Insert partials
     result = result.replace('{{header}}', headerPartial);
     result = result.replace('{{footer}}', footerPartial);
+    result = result.replace('{{convertkit}}', convertKitPartial);
     
     // Handle arrays (for blog index)
     if (data.posts) {

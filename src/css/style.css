@@ -46,12 +46,12 @@ main {
     max-width: var(--max-width);
     margin: 0 auto;
     padding: 4rem 2rem;
-    text-align: center;
     flex: 1;
 }
 
 .hero {
     margin-bottom: 6rem;
+    text-align: center;
 }
 
 .hero h1 {
@@ -254,4 +254,71 @@ main {
 .blog-preview .post-excerpt {
     margin-top: 1rem;
     color: #666;
+} 
+
+/* ConvertKit Form styles */
+.convertkit-form-wrapper {
+    background: #f8f9fa;
+    border-radius: 8px;
+    padding: 2rem;
+    margin: 2rem 0;
+    text-align: center;
+}
+
+.convertkit-form-wrapper h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    color: var(--text-color);
+}
+
+.convertkit-form-wrapper p {
+    color: #666;
+    margin-bottom: 1.5rem;
+}
+
+.convertkit-form-wrapper form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.convertkit-form-wrapper .form-group {
+    width: 100%;
+}
+
+.convertkit-form-wrapper input {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+    transition: border-color 0.2s ease;
+}
+
+.convertkit-form-wrapper input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+}
+
+.convertkit-form-wrapper button {
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 0.8rem 2rem;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.convertkit-form-wrapper button:hover {
+    transform: translateY(-2px);
+}
+
+@media (max-width: 768px) {
+    .convertkit-form-wrapper {
+        padding: 1.5rem;
+    }
 } 
