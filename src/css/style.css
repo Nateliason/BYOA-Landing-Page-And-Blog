@@ -17,6 +17,9 @@ body {
     line-height: 1.6;
     color: var(--text-color);
     background-color: var(--background-color);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
 .nav-container {
@@ -44,6 +47,7 @@ main {
     margin: 0 auto;
     padding: 4rem 2rem;
     text-align: center;
+    flex: 1;
 }
 
 .hero {
@@ -131,4 +135,123 @@ main {
     .stats-section h2 {
         font-size: 1.8rem;
     }
+} 
+
+/* Blog styles */
+.blog-post {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+.blog-post article header {
+    margin-bottom: 2rem;
+}
+
+.blog-post h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.post-meta {
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.post-content {
+    line-height: 1.6;
+}
+
+.post-content p {
+    margin-bottom: 1.5rem;
+}
+
+.post-content h2 {
+    margin: 2rem 0 1rem;
+}
+
+.post-content img {
+    max-width: 100%;
+    height: auto;
+    margin: 1rem 0;
+}
+
+.post-content code {
+    background: #f4f4f4;
+    padding: 0.2rem 0.4rem;
+    border-radius: 3px;
+}
+
+.post-content pre code {
+    display: block;
+    padding: 1rem;
+    overflow-x: auto;
+}
+
+/* Footer styles */
+.site-footer {
+    margin-top: auto;
+    padding: 1rem 0;
+    background-color: var(--background-color);
+    border-top: 1px solid #eee;
+}
+
+.site-footer .nav-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.5rem 2rem;
+}
+
+.site-footer p {
+    color: #666;
+    font-size: 0.9rem;
+} 
+
+/* Blog Index styles */
+.blog-index {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+.blog-index h1 {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    text-align: left;
+}
+
+.blog-list {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.blog-preview {
+    text-align: left;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid #eee;
+}
+
+.blog-preview:last-child {
+    border-bottom: none;
+}
+
+.blog-preview h2 {
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+}
+
+.blog-preview h2 a {
+    color: var(--text-color);
+    text-decoration: none;
+}
+
+.blog-preview h2 a:hover {
+    color: var(--primary-color);
+}
+
+.blog-preview .post-excerpt {
+    margin-top: 1rem;
+    color: #666;
 } 

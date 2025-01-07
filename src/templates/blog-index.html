@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog | My Site</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    {{header}}
+    <main>
+        <div class="blog-index">
+            <h1>Blog Posts</h1>
+            <div class="blog-list">
+                {{#each posts}}
+                <article class="blog-preview">
+                    <h2><a href="/blog/{{slug}}">{{title}}</a></h2>
+                    <div class="post-meta">
+                        <time datetime="{{date}}">{{date}}</time>
+                    </div>
+                    <p class="post-excerpt">{{excerpt}}</p>
+                </article>
+                {{/each}}
+            </div>
+        </div>
+    </main>
+    {{footer}}
+</body>
+</html> 
