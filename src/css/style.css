@@ -51,7 +51,6 @@ main {
 
 .hero {
     margin-bottom: 6rem;
-    text-align: center;
 }
 
 .hero h1 {
@@ -71,7 +70,7 @@ main {
 
 .hero-content {
     max-width: 800px;
-    margin: 0 auto;
+    margin: 0;
 }
 
 .lead {
@@ -321,4 +320,47 @@ main {
     .convertkit-form-wrapper {
         padding: 1.5rem;
     }
+} 
+
+.testimonial-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    padding: 2rem 1rem;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.testimonial-avatars {
+    display: flex;
+    align-items: center;
+}
+
+.testimonial-avatars .avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 2px solid white;
+    margin-left: -10px;
+    object-fit: cover;
+}
+
+.testimonial-avatars .avatar:first-child {
+    margin-left: 0;
+}
+
+.rating {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1rem;
+}
+
+.rating .stars {
+    letter-spacing: 2px;
+}
+
+.rating .count {
+    font-weight: 600;
 } 

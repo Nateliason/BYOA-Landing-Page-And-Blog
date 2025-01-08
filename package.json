@@ -6,12 +6,18 @@
   "scripts": {
     "build": "node build.js",
     "serve": "npm run build && serve dist",
-    "dev": "npm run serve"
+    "dev": "npm run serve",
+    "watch": "nodemon --watch src -e html,md,css,js --ignore dist/ --exec 'npm run build'",
+    "dev:watch": "browser-sync start --server 'dist' --files 'dist/**/*' --no-notify & npm run watch"
   },
   "dependencies": {
     "marked": "^9.1.5",
     "front-matter": "^4.0.2",
     "fs-extra": "^11.1.1",
     "serve": "^14.2.1"
+  },
+  "devDependencies": {
+    "browser-sync": "^2.29.3",
+    "nodemon": "^3.0.1"
   }
-} 
+}
